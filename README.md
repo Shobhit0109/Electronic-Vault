@@ -1,30 +1,36 @@
-# Electronic Safe with Face Authentication
+# Face Authentication with Electronic Safe
 
-This project combines an Arduino-based electronic safe with a Python-based face authentication system. The electronic safe is controlled by an Arduino Uno and provides a secure way to store your valuables. The face authentication system uses OpenCV and DeepFace to verify the identity of the user.
+This project uses face recognition to authenticate a user and then interact with an electronic safe simulator.
 
-## Electronic Safe
+## Getting Started
 
-The electronic safe is implemented in C++ for the Arduino platform. It uses a 16x02 LCD Monitor and a Membrane Keypad for user interaction. The lock mechanism is powered by a Servo motor. When the correct password is entered, the Servo motor turns to unlock the safe. The state of the safe (locked/unlocked), as well as the secret code, are stored in the Arduino's EEPROM. This ensures that the code isn't wiped even when the power goes off.
+1. Navigate to the [`faceAuthentication`](command:_github.copilot.openRelativePath?%5B%22faceAuthentication%22%5D "faceAuthentication") directory:
 
-The electronic safe code is located in the [`electronic-safe`](command:_github.copilot.openRelativePath?%5B%22electronic-safe%22%5D "electronic-safe") directory. The main file is [`electronic-safe.ino`](command:_github.copilot.openSymbolInFile?%5B%22electronic-safe%2Felectronic-safe.ino%22%2C%22electronic-safe.ino%22%5D "electronic-safe/electronic-safe.ino"), and the `SafeState` class, which manages the state of the safe, is defined in [`SafeState.cpp`](command:_github.copilot.openSymbolInFile?%5B%22electronic-safe%2FSafeState.cpp%22%2C%22SafeState.cpp%22%5D "electronic-safe/SafeState.cpp") and [`SafeState.h`](command:_github.copilot.openSymbolInFile?%5B%22electronic-safe%2FSafeState.h%22%2C%22SafeState.h%22%5D "electronic-safe/SafeState.h").
+```sh
+cd faceAuthentication
+```
 
-## Face Authentication
+2. Run the [`main.py`](command:_github.copilot.openRelativePath?%5B%22faceAuthentication%2Fmain.py%22%5D "faceAuthentication/main.py") script:
 
-The face authentication system is implemented in Python. It uses OpenCV to capture video from the webcam and DeepFace to verify the identity of the user. If the user's face matches a reference image, the system opens a web browser and navigates to a specified URL.
+```sh
+python main.py
+```
 
-The face authentication code is located in the [`faceAuthentication`](command:_github.copilot.openRelativePath?%5B%22faceAuthentication%22%5D "faceAuthentication") directory. The main file is [`main.py`](command:_github.copilot.openSymbolInFile?%5B%22faceAuthentication%2Fmain.py%22%2C%22main.py%22%5D "faceAuthentication/main.py").
+This will open your camera and start the face recognition process. Once your face is recognized, the script will automatically open the Wokwi simulator.
 
-## Authors
+## Wokwi Simulator
 
-This project was created by:
-- Shobhit (2021UCS1618)
-- Prachi Sah (2021UCS1702)
-- Ujjawal (2021UCS1659)
+The Wokwi simulator is located at [this link](https://wokwi.com/projects/387337896026447873). The files for the simulator are stored in the [`electronic-safe`](command:_github.copilot.openRelativePath?%5B%22electronic-safe%22%5D "electronic-safe") directory of this project.
 
-## How to Run
+In the simulator, the electronic safe will first ask for a secret code. It will then suggest a password and ask you to enter a password. The safe will tell you the strength of the password you entered. Once the safe is locked, it will ask for the same password to unlock it. If you enter the wrong password three times, the safe will terminate.
 
-To run the electronic safe, upload the [`electronic-safe.ino`](command:_github.copilot.openRelativePath?%5B%22electronic-safe%2Felectronic-safe.ino%22%5D "electronic-safe/electronic-safe.ino") file to your Arduino Uno.
+## Project Structure
 
-To run the face authentication system, you need to have Python, OpenCV, DeepFace, and Selenium installed. You can then run the [`main.py`](command:_github.copilot.openRelativePath?%5B%22faceAuthentication%2Fmain.py%22%5D "faceAuthentication/main.py") file.
+- [`faceAuthentication/`](command:_github.copilot.openRelativePath?%5B%22faceAuthentication%2F%22%5D "faceAuthentication/"): Contains the main python file to be executed
+- [`electronic-safe/`](command:_github.copilot.openRelativePath?%5B%22electronic-safe%2F%22%5D "electronic-safe/"): Contains the arduino files for the Wokwi simulator.
+- [`model/`](command:_github.copilot.openRelativePath?%5B%22model%2F%22%5D "model/"): Contains the datasets, training & face recognition model.
 
-Please note that you need to adjust the paths to the reference images in the [`main.py`](command:_github.copilot.openRelativePath?%5B%22faceAuthentication%2Fmain.py%22%5D "faceAuthentication/main.py") file to match your setup.
+## Contributers
+- 2021UCS1618 **Shobhit**
+- 2021UCS1702 **Prachi Sah**
+- 2021UCS1659 **Ujjawal**
