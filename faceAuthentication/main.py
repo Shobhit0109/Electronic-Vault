@@ -13,9 +13,11 @@ face_match = False
 choice = 0
 
 reference_img_shobhit = cv2.imread(
-    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_shobhit.jpg")
+    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_shobhit.jpg"
+)
 reference_img_prachi = cv2.imread(
-    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg")
+    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg"
+)
 
 
 def check_face(frame):
@@ -23,13 +25,13 @@ def check_face(frame):
     global choice
     try:
         result = 0
-        if (choice == 0):
+        if choice == 0:
             result = DeepFace.verify(frame, reference_img_shobhit.copy())
             choice = 1
         else:
             result = DeepFace.verify(frame, reference_img_prachi.copy())
             choice = 0
-        if result['verified']:
+        if result["verified"]:
             face_match = True
         else:
             face_match = False
@@ -55,11 +57,18 @@ while True:
             sleep(1800)  # 30 mins
             browser.quit()
         else:
-            cv2.putText(frame, "NO MATCH!", (20, 450),
-                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
+            cv2.putText(
+                frame,
+                "NO MATCH!",
+                (20, 450),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                2,
+                (0, 0, 255),
+                3,
+            )
 
-        cv2.imshow('video', frame)
+        cv2.imshow("video", frame)
 
     key = cv2.waitKey(1)
-    if key == ord('q'):
+    if key == ord("q"):
         break
