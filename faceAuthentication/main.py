@@ -9,11 +9,14 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 counter = 0
-
-reference_img_shobhit = cv2.imread("/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_shobhit.jpg")
-reference_img_prachi = cv2.imread("/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg")
 face_match = False
 choice = 0
+
+reference_img_shobhit = cv2.imread(
+    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_shobhit.jpg")
+reference_img_prachi = cv2.imread(
+    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg")
+
 
 def check_face(frame):
     global face_match
@@ -45,16 +48,15 @@ while True:
         if face_match:
             cv2.destroyAllWindows()
             cap.release()
-            
+
             url = "https://wokwi.com/projects/387337896026447873"
             browser = webdriver.Firefox()
             browser.get(url)
-            sleep(1800) # 30 mins
+            sleep(1800)  # 30 mins
             browser.quit()
-            
-            # cv2.putText(frame, "MATCH!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
         else:
-            cv2.putText(frame, "NO MATCH!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
+            cv2.putText(frame, "NO MATCH!", (20, 450),
+                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
 
         cv2.imshow('video', frame)
 
