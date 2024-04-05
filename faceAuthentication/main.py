@@ -13,10 +13,10 @@ face_match = False
 choice = 0
 
 reference_img_shobhit = cv2.imread(
-    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_shobhit.jpg"
+    "/home/shobhit/Downloads/projects/Electronic-Vault/faceAuthentication/reference_shobhit.jpg"
 )
 reference_img_prachi = cv2.imread(
-    "/home/shobhit/Downloads/Edge/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg"
+    "/home/shobhit/Downloads/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg"
 )
 
 
