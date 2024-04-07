@@ -19,7 +19,6 @@ reference_img_prachi = cv2.imread(
     "/home/shobhit/Downloads/projects/Electronic-Vault/faceAuthentication/reference_prachi.jpg"
 )
 
-
 def check_face(frame):
     global face_match
     global choice
@@ -38,7 +37,6 @@ def check_face(frame):
     except ValueError as e:
         print(f"Error during face verification: {str(e)}")
         face_match = False
-
 
 while True:
     ret, frame = cap.read()
